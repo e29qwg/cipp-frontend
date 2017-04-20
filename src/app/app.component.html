@@ -1,0 +1,7 @@
+<h1>
+  {{title}}
+</h1>
+
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+
+<div class="fb-post" *ngFor="let post of posts" [attr.data-href]="post.permalink_url"></div>

@@ -20,17 +20,31 @@ export class PostService {
   }
 
   private extractData(res: Response) {
-    let body = res.json();
+    const posts = res.json();
+    let rank: number;
+    let lastScore: number;
+    const getProjectName = new RegExp('โครงงาน: (.*)\ #.*\n');
+    const getAuthors = new RegExp('(.*)\n');
 
-    var getProjectName = new RegExp('โครงงาน: (.*)\ #.*\n');
-    var getAuthors = new RegExp('(.*)\n');
+    posts.sort((a, b) => b.score - a.score);
 
-    for (let post of body) {
+    rank = 1;
+    lastScore = posts[0].score + 1;
+
+    for (const post of posts) {
       post.authors = getAuthors.exec(post.message)[1];
       post.project_name = getProjectName.exec(post.message)[1];
+
+      post.rank = rank;
+
+      if (post.score < lastScore)
+      {
+        lastScore = post.score;
+        rank++;
+      }
     }
 
-    return body.sort((a, b) => b.score - a.score) || { };
+    return posts.sort((a, b) => b.score - a.score) || { };
   }
 
   private handleError(error: Response | any) {

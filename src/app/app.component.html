@@ -6,13 +6,28 @@
 
 <div class="row">
   <div class="col s12" *ngFor="let post of posts">
-    <div class="card-panel teal">
-      <span class="white-text">
-        <h5>{{ post.project_name }}</h5><br />
-        -- {{ post.authors }}<br />
-        Score: {{ post.score }}
-      </span>
-      <!-- <div class="fb-post" [attr.data-href]="post.permalink_url"></div> -->
+    <div class="card blue-grey darken-1">
+      <div class="row card-content">
+        <div class="valign-wrapper">
+            <div class="col s3 m2 l1 card-image  white-text center-align">
+              <img *ngIf="post.rank == 1" src="assets/img/goldMedal.svg">
+              <img *ngIf="post.rank == 2" src="assets/img/silverMedal.svg">
+              <img *ngIf="post.rank == 3" src="assets/img/bronzeMedal.svg">
+              <h4 *ngIf="post.rank > 3">{{ post.rank }}</h4><br />
+              Score: {{ post.score }}
+            </div>
+            <div class="col s9 m10 l11">
+              <div class="white-text">
+                <span class="card-title">{{ post.project_name }}</span>
+                <div *ngIf="post._id == showingPost" class="fb-post" [attr.data-href]="post.permalink_url"></div>
+                <blockquote>-- {{ post.authors }}</blockquote>
+              </div>
+              <div class="card-action">
+                <a href="#" (click)="showPost(post._id)">+1 this project</a>
+              </div>
+          </div>
+        </div>
+        </div>
     </div>
   </div>
 </div>

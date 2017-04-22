@@ -14,4 +14,5 @@ export class Post {
   SHARE: number;
   permalink_url: string;
   score: number;
+  rank: number;
 }

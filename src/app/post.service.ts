@@ -21,6 +21,15 @@ export class PostService {
 
   private extractData(res: Response) {
     let body = res.json();
+
+    var getProjectName = new RegExp('โครงงาน: (.*)\ #.*\n');
+    var getAuthors = new RegExp('(.*)\n');
+
+    for (let post of body) {
+      post.authors = getAuthors.exec(post.message)[1];
+      post.project_name = getProjectName.exec(post.message)[1];
+    }
+
     return body.sort((a, b) => b.score - a.score) || { };
   }
 

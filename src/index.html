@@ -2,15 +2,33 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Frontend</title>
+  <title>CIPP2017</title>
   <base href="/">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.8" async></script>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() { FB.init({ xfbml: true, version: 'v2.9' }); };
+    function renderPost() { FB.XFBML.parse(); }
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+  <div class="container">
+    <app-root>Loading...</app-root>
+  </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <footer></footer>
 </body>
-<footer></footer>
 </html>

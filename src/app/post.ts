@@ -2,6 +2,8 @@ export class Post {
   _id: string;
   id: string;
   message: string;
+  authors?: string;
+  project_name?: string;
   picture: string;
   LIKE: number;
   LOVE: number;

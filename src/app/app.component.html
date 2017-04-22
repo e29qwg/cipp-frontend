@@ -1,7 +1,18 @@
-<h1>
-  {{title}}
-</h1>
+<h3>
+  {{ title }}
+</h3>
 
-<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+<p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
-<div class="fb-post" *ngFor="let post of posts" [attr.data-href]="post.permalink_url"></div>
+<div class="row">
+  <div class="col s12" *ngFor="let post of posts">
+    <div class="card-panel teal">
+      <span class="white-text">
+        <h5>{{ post.project_name }}</h5><br />
+        -- {{ post.authors }}<br />
+        Score: {{ post.score }}
+      </span>
+      <!-- <div class="fb-post" [attr.data-href]="post.permalink_url"></div> -->
+    </div>
+  </div>
+</div>

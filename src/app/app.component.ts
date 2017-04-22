@@ -59,9 +59,12 @@ export class AppComponent implements OnInit {
       this.showingPost = '';
     else
       this.showingPost = postID;
-
+      
+    this.timerSubscription.unsubscribe();
+    this.postsSubscription.unsubscribe();
+    this.reloadPosts();
     this.fb.init(this.initParams);
-    
+
     return false;
   }
 

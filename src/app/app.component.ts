@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
   }
 
   private subscribeToData(): void {
-    this.reloadInterval = (this.showingPost == '') ? 60000: 10000;
+    this.reloadInterval = (this.showingPost == '') ? 10000: 60000;
     this.timerSubscription = Observable.timer(this.reloadInterval).first().subscribe(
       () => this.reloadPosts()
     );
@@ -61,6 +61,8 @@ export class AppComponent implements OnInit {
       this.showingPost = postID;
 
     this.fb.init(this.initParams);
+    
+    return false;
   }
 
   ngOnInit() {

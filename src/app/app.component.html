@@ -19,7 +19,7 @@
             <div class="col s9 m10 l11">
               <div class="white-text">
                 <span class="card-title">{{ post.project_name }}</span>
-                <div *ngIf="post._id == showingPost" class="fb-post" [attr.data-href]="post.permalink_url"></div>
+                <div *ngIf="post._id == showingPost" class="fb-post" [attr.data-href]="post.permalink_url" width="auto"></div>
                 <blockquote>-- {{ post.authors }}</blockquote>
               </div>
               <div class="card-action">

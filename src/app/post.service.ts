@@ -33,13 +33,14 @@ export class PostService {
 
     // Filter posts
     posts = posts.filter((post, idx, obj) => {
-      if (this.filterType == 'CoE')
+      if (this.filterType === 'CoE') {
         return isCoE.test(post.message);
-      else if (this.filterType == "ICT")
+      } else if (this.filterType === 'ICT') {
         return !isCoE.test(post.message);
-      else
+      } else {
         return true;
-    })
+      }
+    });
 
     // Sort by score
     posts.sort((a, b) => b.score - a.score);
@@ -47,7 +48,7 @@ export class PostService {
     rank = 1;
     lastScore = posts[0].score + 1;
 
-    for (let post of posts) {
+    for (const post of posts) {
       // extract post details
       post.authors = getAuthors.exec(post.message)[1];
       post.project_name = getProjectName.exec(post.message)[1];
@@ -55,8 +56,7 @@ export class PostService {
       // compute post rank
       post.rank = rank;
 
-      if (post.score < lastScore)
-      {
+      if (post.score < lastScore) {
         lastScore = post.score;
         rank++;
       }

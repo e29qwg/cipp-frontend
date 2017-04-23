@@ -19,6 +19,9 @@ export class AppComponent implements OnInit {
   private postsSubscription: AnonymousSubscription;
   private timerSubscription: AnonymousSubscription;
 
+  readonly normalInterval = 15000; // 15s
+  readonly facebookInterval = 60000; // 60s
+
   title = 'The 2017 CoE-ICT PSU Phuket Senior Projects';
   shortTitle = 'CIPP2017';
   posts: Post[];
@@ -33,7 +36,7 @@ export class AppComponent implements OnInit {
   };
 
   constructor (private postService: PostService, private fb: FacebookService) {
-    this.reloadInterval = 10000;
+    this.showingPost = '';
     this.filterType = 'All';
   }
 
@@ -51,28 +54,31 @@ export class AppComponent implements OnInit {
   }
 
   private subscribeToData(): void {
-    this.reloadInterval = (this.showingPost == '') ? 10000: 60000;
+    this.reloadInterval = (this.showingPost === '') ? this.normalInterval : this.facebookInterval;
     this.timerSubscription = Observable.timer(this.reloadInterval).first().subscribe(
       () => this.reloadPosts()
     );
   }
 
-  setFilter(filterType: string) {
-    this.filterType = filterType;
+  resubscribe(): void {
     this.timerSubscription.unsubscribe();
     this.postsSubscription.unsubscribe();
     this.reloadPosts();
   }
 
-  showPost(postID: string) {
-    if (this.showingPost == postID)
-      this.showingPost = '';
-    else
-      this.showingPost = postID;
+  setFilter(filterType: string) {
+    this.filterType = filterType;
+    this.resubscribe();
+  }
 
-    this.timerSubscription.unsubscribe();
-    this.postsSubscription.unsubscribe();
-    this.reloadPosts();
+  showPost(postID: string) {
+    if (this.showingPost === postID) {
+      this.showingPost = '';
+    } else {
+      this.showingPost = postID;
+    }
+
+    this.resubscribe();
 
     return false;
   }

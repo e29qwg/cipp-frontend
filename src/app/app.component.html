@@ -32,11 +32,13 @@
                   <img *ngIf="post.rank == 2" src="assets/img/silverMedal.svg">
                   <img *ngIf="post.rank == 3" src="assets/img/bronzeMedal.svg">
                   <h4 *ngIf="post.rank > 3">{{ post.rank }}</h4><br />
-                  Score: {{ post.score }}
+                  <b>Score:</b> {{ post.score }}
                 </div>
                 <div class="col s9 m10 l11">
                   <div class="white-text">
-                    <span class="card-title">{{ idx + 1}} - {{ post.project_name }}</span>
+                    <span class="card-title">
+                      {{ idx + 1}} - <a [href]="post.permalink_url">{{ post.project_name }}</a>
+                    </span>
                     <div *ngIf="post._id == showingPost" class="fb-post" [attr.data-href]="post.permalink_url" width="auto"></div>
                     <blockquote>-- {{ post.authors }}</blockquote>
                   </div>

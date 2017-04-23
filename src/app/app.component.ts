@@ -62,7 +62,6 @@ export class AppComponent implements OnInit {
     this.timerSubscription.unsubscribe();
     this.postsSubscription.unsubscribe();
     this.reloadPosts();
-    return false;
   }
 
   showPost(postID: string) {

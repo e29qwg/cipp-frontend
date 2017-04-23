@@ -2,6 +2,8 @@ export class Post {
   _id: string;
   id: string;
   message: string;
+  authors?: string;
+  project_name?: string;
   picture: string;
   LIKE: number;
   LOVE: number;
@@ -12,4 +14,6 @@ export class Post {
   SHARE: number;
   permalink_url: string;
   score: number;
+  rank: number;
+  display: boolean;
 }

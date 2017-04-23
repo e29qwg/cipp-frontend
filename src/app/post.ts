@@ -15,5 +15,4 @@ export class Post {
   permalink_url: string;
   score: number;
   rank: number;
-  display: boolean;
 }

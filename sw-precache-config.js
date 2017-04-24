@@ -5,5 +5,8 @@ module.exports = {
   runtimeCaching: [{
     urlPattern: /coepkt\.org/,
     handler: 'networkFirst'
+  }, {
+    urlPattern: /cipp2017\.contest\.in\.th/,
+    handler: 'networkFirst'
   }]
 };

@@ -46,7 +46,7 @@ export class PostService {
     posts.sort((a, b) => b.score - a.score);
 
     rank = 1;
-    lastScore = posts[0].score + 1;
+    lastScore = posts[0].score;
 
     for (const post of posts) {
       // extract post details
@@ -54,12 +54,12 @@ export class PostService {
       post.project_name = getProjectName.exec(post.message)[1];
 
       // compute post rank
-      post.rank = rank;
-
       if (post.score < lastScore) {
         lastScore = post.score;
         rank++;
       }
+
+      post.rank = rank;
     }
 
     return posts || { };

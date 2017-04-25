@@ -21,6 +21,9 @@ export class ProjectorComponent implements OnInit {
   readonly normalInterval = 15000; // 15s
   readonly facebookInterval = 60000; // 60s
 
+  title = 'The 2017 CoE-ICT PSU Phuket Senior Projects';
+  shortTitle = 'CIPP2017';
+
   posts: Post[];
   errorMessage: string;
   showingPost: string;

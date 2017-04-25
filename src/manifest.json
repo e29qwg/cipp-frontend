@@ -8,8 +8,10 @@
   }, {
     "src": "assets/img/logo-cipp2017-256px.png",
     "sizes": "256x256",
-    "type": "image/png"
+    "type": "image\/png"
   }],
   "display": "standalone",
+  "theme_color": "#29b6f6",
+  "background_color": "#ffffff",
   "start_url": "./?utm_source=web_app_manifest"
 }

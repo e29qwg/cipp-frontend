@@ -54,12 +54,12 @@ export class PostService {
       post.project_name = getProjectName.exec(post.message)[1];
 
       // compute post rank
-      post.rank = rank;
-
       if (post.score < lastScore) {
         lastScore = post.score;
         rank++;
       }
+
+      post.rank = rank;
     }
 
     return posts || { };

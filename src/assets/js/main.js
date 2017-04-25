@@ -4,12 +4,25 @@ $(document).ready(function() {
     draggable: true
   });
 
-  if ($('.toprow')) {
+  if ($('.toprow').length) {
     $('.toprow').pushpin({
       top: $('.toprow').offset().top
-    })
+    });
   }
 });
+
+function scrollUpAndDown(speed) {
+  $('html, body').animate({
+    scrollTop: $(document).height() - $(window).height() }, speed, function() {
+      $(this).animate({ scrollTop: 0 }, speed);
+    }
+  );
+}
+
+function autoScroll(speed) {
+  scrollUpAndDown(speed);
+  setInterval(function(){scrollUpAndDown(speed)}, speed * 2);
+}
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/service-worker.js')

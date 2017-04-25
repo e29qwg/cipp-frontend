@@ -19,7 +19,6 @@ export class ProjectorComponent implements OnInit {
   private timerSubscription: AnonymousSubscription;
 
   readonly normalInterval = 15000; // 15s
-  readonly facebookInterval = 60000; // 60s
 
   title = 'The 2017 CoE-ICT PSU Phuket Senior Projects';
   shortTitle = 'CIPP2017';
@@ -46,7 +45,6 @@ export class ProjectorComponent implements OnInit {
       .subscribe(
         posts => {
           this.posts = posts;
-          this.fb.init(this.initParams);
           this.subscribeToData();
         },
         error => this.errorMessage = <any>error
@@ -54,33 +52,9 @@ export class ProjectorComponent implements OnInit {
   }
 
   private subscribeToData(): void {
-    this.reloadInterval = (this.showingPost === '') ? this.normalInterval : this.facebookInterval;
-    this.timerSubscription = Observable.timer(this.reloadInterval).first().subscribe(
+    this.timerSubscription = Observable.timer(this.normalInterval).first().subscribe(
       () => this.reloadPosts()
     );
-  }
-
-  resubscribe(): void {
-    this.timerSubscription.unsubscribe();
-    this.postsSubscription.unsubscribe();
-    this.reloadPosts();
-  }
-
-  setFilter(filterType: string) {
-    this.filterType = filterType;
-    this.resubscribe();
-  }
-
-  showPost(postID: string) {
-    if (this.showingPost === postID) {
-      this.showingPost = '';
-    } else {
-      this.showingPost = postID;
-    }
-
-    this.resubscribe();
-
-    return false;
   }
 
   ngOnInit() {

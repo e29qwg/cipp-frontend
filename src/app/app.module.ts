@@ -5,7 +5,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { FacebookModule } from 'ngx-facebook';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
-import { AppRoutes } from './app.router';
+import { AppRoutingModule } from './app.router';
 import { ProjectorComponent } from './projector/projector.component';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { ProjectorComponent } from './projector/projector.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutes,
+    AppRoutingModule,
     HttpModule,
     JsonpModule,
     FacebookModule.forRoot()

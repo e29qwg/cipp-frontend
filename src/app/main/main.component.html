@@ -6,14 +6,14 @@
     </a>
     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul id="nav-default" class="right hide-on-med-and-down">
-      <li [class]="filterType=='All' ? 'active' : ''"><a href="#" (click)="setFilter('All')">All</a></li>
-      <li [class]="filterType=='CoE' ? 'active' : ''"><a href="#" (click)="setFilter('CoE')">CoE</a></li>
-      <li [class]="filterType=='ICT' ? 'active' : ''"><a href="#" (click)="setFilter('ICT')">ICT</a></li>
+      <li [class]="filterType=='All' ? 'active' : ''"><a [routerLink]="" (click)="setFilter('All')">All</a></li>
+      <li [class]="filterType=='CoE' ? 'active' : ''"><a [routerLink]="" (click)="setFilter('CoE')">CoE</a></li>
+      <li [class]="filterType=='ICT' ? 'active' : ''"><a [routerLink]="" (click)="setFilter('ICT')">ICT</a></li>
     </ul>
     <ul id="nav-mobile" class="side-nav">
-      <li [class]="filterType=='All' ? 'active' : ''"><a href="#" (click)="setFilter('All')">All</a></li>
-      <li [class]="filterType=='CoE' ? 'active' : ''"><a href="#" (click)="setFilter('CoE')">CoE</a></li>
-      <li [class]="filterType=='ICT' ? 'active' : ''"><a href="#" (click)="setFilter('ICT')">ICT</a></li>
+      <li [class]="filterType=='All' ? 'active' : ''"><a [routerLink]="" (click)="setFilter('All')">All</a></li>
+      <li [class]="filterType=='CoE' ? 'active' : ''"><a [routerLink]="" (click)="setFilter('CoE')">CoE</a></li>
+      <li [class]="filterType=='ICT' ? 'active' : ''"><a [routerLink]="" (click)="setFilter('ICT')">ICT</a></li>
     </ul>
   </div>
 </nav>
@@ -43,7 +43,7 @@
                     <blockquote>-- {{ post.authors }}</blockquote>
                   </div>
                   <div class="card-action">
-                    <a class="right" href="#" (click)="showPost(post._id)">
+                    <a class="right" [routerLink]="" (click)="showPost(post._id)">
                       <span *ngIf="post._id != showingPost"><i class="material-icons">thumb_up</i> this project</span>
                       <span *ngIf="post._id == showingPost">Close</span>
                     </a>

@@ -3,6 +3,12 @@ $(document).ready(function() {
     closeOnClick: true,
     draggable: true
   });
+
+  if ($('.toprow')) {
+    $('.toprow').pushpin({
+      top: $('.toprow').offset().top
+    })
+  }
 });
 
 if ('serviceWorker' in navigator) {

@@ -9,7 +9,7 @@ import { Post } from './post';
 
 @Injectable()
 export class PostService {
-  private postsURL = 'https://api.coepkt.org/posts';
+  private postsURL = 'https://coepkt.org/assets/freeze.json';
   private filterType = 'All';
 
   constructor(private http: Http) { }

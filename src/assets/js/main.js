@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     var lagTime = 5000; // 5s
     var duration = 120000; // 120s
-    setTimeout(startScroll, lagTime, lagTime, duration);
+    // setTimeout(startScroll, lagTime, lagTime, duration);
   }
 });
 

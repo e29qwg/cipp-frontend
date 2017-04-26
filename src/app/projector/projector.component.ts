@@ -45,7 +45,7 @@ export class ProjectorComponent implements OnInit {
       .subscribe(
         posts => {
           this.posts = posts;
-          this.subscribeToData();
+          // this.subscribeToData();
         },
         error => this.errorMessage = <any>error
       );

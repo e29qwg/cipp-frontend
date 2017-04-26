@@ -47,7 +47,7 @@ export class MainComponent implements OnInit {
         posts => {
           this.posts = posts;
           this.fb.init(this.initParams);
-          this.subscribeToData();
+          // this.subscribeToData();
         },
         error => this.errorMessage = <any>error
       );

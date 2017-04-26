@@ -4,24 +4,28 @@ $(document).ready(function() {
     draggable: true
   });
 
-  if ($('.toprow').length) {
-    $('.toprow').pushpin({
-      top: $('.toprow').offset().top
+  if ($('.table-header').length) {
+    $('.table-header').pushpin({
+      top: $('.table-header').offset().top
     });
+
+    var lagTime = 5000; // 5s
+    var duration = 120000; // 120s
+    setTimeout(startScroll, lagTime, lagTime, duration);
   }
 });
 
-function scrollUpAndDown(speed) {
+function startScroll(lagTime, duration) {
+  autoScroll(duration);
+  setInterval(autoScroll, (duration * 2) + lagTime, duration);
+}
+
+function autoScroll(speed) {
   $('html, body').animate({
     scrollTop: $(document).height() - $(window).height() }, speed, function() {
       $(this).animate({ scrollTop: 0 }, speed);
     }
   );
-}
-
-function autoScroll(speed) {
-  scrollUpAndDown(speed);
-  setInterval(function(){scrollUpAndDown(speed)}, speed * 2);
 }
 
 if ('serviceWorker' in navigator) {
